@@ -4,7 +4,12 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+.landing {
+    background-image: url("../assets/z.jpeg");
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 800px;
+}
 /* NavBar */
 
 .top-nav {
