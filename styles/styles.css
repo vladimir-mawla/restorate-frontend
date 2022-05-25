@@ -42,3 +42,8 @@
 .contents-wrapper h2{
     font-size: 40px;
 }
+.contents-wrapper input{
+    height: 45px;
+    font-size: 20px;
+    font-weight: 100;
+}
