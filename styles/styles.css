@@ -50,6 +50,7 @@
 #search-img {
     width: 28px;
     padding-left: 3px;
+    cursor: pointer;
 }
 .search-form {
     display: flex;
