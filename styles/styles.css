@@ -49,4 +49,9 @@
 }
 #search-img {
     width: 28px;
+    padding-left: 3px;
+}
+.search-form {
+    display: flex;
+    align-items: center;
 }
