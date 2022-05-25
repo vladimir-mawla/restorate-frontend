@@ -5,10 +5,11 @@
     box-sizing: border-box;
 }
 .landing {
-    background-image: url("../assets/z.jpeg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../assets/z.jpeg");
     background-repeat: no-repeat;
     width: 100%;
-    height: 800px;
+    height: 550px;
+    color: rgb(255, 255, 255);
 }
 /* NavBar */
 
