@@ -86,7 +86,7 @@
 .form input {
     font-family: "Roboto", sans-serif;
     outline: 0;
-    background: #f2f2f2;
+    background: #f1f0f0;
     width: 100%;
     border: 0;
     margin: 0 0 15px;
@@ -98,7 +98,7 @@
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;
-    background: #4CAF50;
+    background: #4baf4e;
     width: 100%;
     border: 0;
     padding: 15px;
@@ -117,7 +117,7 @@
     font-size: 12px;
 }
 .form .message a {
-    color: #4CAF50;
+    color: #4baf4e;
     text-decoration: none;
 }
 
