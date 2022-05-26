@@ -132,3 +132,8 @@ body#login-page #signup_page{
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
     font-family: sans-serif; 
 }
+a {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+}
