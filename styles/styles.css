@@ -121,3 +121,14 @@
     text-decoration: none;
 }
 
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+body#login-page {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    font-family: sans-serif; 
+}
