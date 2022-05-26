@@ -128,7 +128,7 @@
     margin: 0 auto;
 }
 
-body#login-page {
+body#login-page #signup_page{
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
     font-family: sans-serif; 
 }
