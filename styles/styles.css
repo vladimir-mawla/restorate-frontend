@@ -143,3 +143,9 @@ a {
     height: 380px;
     color: rgb(255, 255, 255);
 }
+#signup-page a {
+    color: black;
+}
+#login-page a {
+    color: black;
+}
