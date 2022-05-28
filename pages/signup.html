@@ -2,6 +2,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="../styles/styles.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
 
   <body id="signup-page">
@@ -15,13 +16,44 @@
     <div class="login-page">
       <div class="form">
         <form class="register-form">
-          <input type="text" placeholder="full name" />
-          <input type="text" placeholder="username" />
-          <input type="password" placeholder="password" />
-          <button>create</button>
+          <input type="text" placeholder="full name" id="register_fullname"/>
+          <input type="text" placeholder="username" id="register_username"/>
+          <input type="password" placeholder="password" id="register_password"/>
+          <button id="register_button">create</button>
           <p class="message">Already registered? <a href="#">Log In</a></p>
         </form>
       </div>
     </div>
+
+    <script>
+      register_fullname = document.getElementById("register_fullname")
+      register_username = document.getElementById("register_username")
+      register_password = document.getElementById("register_password")
+      document.getElementById("register_button").addEventListener("click", submit)
+      function submit() {
+        if (register_fullname.value == "" || register_username.value == "" || register_password.value == "") {
+          alert("empty data")
+        } else {let form = new FormData() 
+          
+          form.append("username", register_username.value);
+          form.append("full_name", register_fullname.value);
+          form.append("password", register_password.value);
+          
+          axios({
+            method: 'post',
+            url: 'http://192.168.64.2/restoratebe/register.php',
+            data: form,
+          })
+          
+          .then(function(response){
+            console.log(response.data)
+            if(response.data["response"] == "true") {
+              location.href='./users.html'
+            }
+          })
+        }
+      }
+      
+    </script>
   </body>
 </html>
