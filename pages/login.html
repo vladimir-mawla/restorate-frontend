@@ -2,6 +2,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="../styles/styles.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body id="login-page">
     <!-- Start Navigation Bar -->
@@ -14,9 +15,10 @@
     <div class="login-page">
       <div class="form">
         <form class="login-form">
-          <input type="text" placeholder="username" />
-          <input type="password" placeholder="password" />
-          <button>login</button>
+          <input type="text" placeholder="username" id="login_username" />
+          <input type="password" placeholder="password" id="login_password"/>
+          
+          <button id="login_button">login</button>
           <p class="message">
             Not registered? <a href="#">Create an account</a>
           </p>
@@ -24,5 +26,41 @@
         </form>
       </div>
     </div>
+    
+    <script>
+      
+      login_username = document.getElementById("login_username")
+      login_password = document.getElementById("login_password")
+      document.getElementById("login_button").addEventListener("click", submit)
+      function submit() {
+        if (login_username.value == "" || login_password.value == "") {
+          alert("empty data")
+        } else {let form = new FormData() 
+          
+          form.append("username", login_username.value);
+          form.append("password", login_password.value);
+          
+          axios({
+            method: 'post',
+            url: 'http://192.168.64.2/restoratebe/login.php',
+            data: form,
+          })
+
+          .then(function(response){
+            console.log(response.data)
+            if(response.data["response"] == "User Not Found") {
+              alert("Wrong email/password")
+            }
+            if (response.data["user_type"] == 1) {
+              location.href='./admins.html'
+            }
+            if (response.data["user_type"] == 0) {
+              location.href='./users.html'
+            }
+          })
+        }
+      }
+      
+    </script>
   </body>
 </html>
