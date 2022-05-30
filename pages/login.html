@@ -22,7 +22,7 @@
           <p class="message">
             Not registered? <a href="#">Create an account</a>
           </p>
-          </form>
+          
         </form>
       </div>
     </div>
@@ -51,10 +51,10 @@
             if(response.data["response"] == "User Not Found") {
               alert("Wrong email/password")
             }
-            if (response.data["user_type"] == 1) {
+            else if (response.data["user_type"] == 1) {
               location.href='./admins.html'
             }
-            if (response.data["user_type"] == 0) {
+            else if (response.data["user_type"] == null) {
               location.href='./users.html'
             }
           })

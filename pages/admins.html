@@ -4,6 +4,7 @@
 <head>
     <title></title>
     <link rel="stylesheet" href="../styles/styles.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -29,9 +30,14 @@
     <div class="add">
         <h2>Add restaurant</h2>
         <div class="upload">
-            <button>Upload image</button>
-            <input type="text" placeholder="Restaurant's Name">
-            <button>Submit</button>
+            <form>
+                <label for="img">Select image:</label>
+                <input type="text" id="res_img">
+                <input type="text" placeholder="Restaurant's name" id="res_name">
+                <input type="text" placeholder="Restaurant's location" id="res_location">
+                <input type="submit" id="add_button">
+              </form>
+            
         </div>
     </div>
     <div class="approve">
