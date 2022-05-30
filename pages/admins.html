@@ -32,7 +32,7 @@
         <div class="upload">
             <form>
                 <label for="img">Select image:</label>
-                <input type="text" id="res_img">
+                <input type="file" id="res_img" onchange="encodeImageFileAsURL(this)">
                 <input type="text" placeholder="Restaurant's name" id="res_name">
                 <input type="text" placeholder="Restaurant's location" id="res_location">
                 <input type="submit" id="add_button">
@@ -47,17 +47,25 @@
         </div>
     </div>
     <script>
-        res_image = document.getElementById("res_img")
-        res_name = document.getElementById("res_name")
-        res_location = document.getElementById("res_location")
+        var res_image = document.getElementById("res_img")
+        var res_name = document.getElementById("res_name")
+        var res_location = document.getElementById("res_location")
+        function encodeImageFileAsURL(element) {
+            var file = element.files[0];
+            var reader = new FileReader();
+            reader.onloadend = function() {
+                s = reader.result;
+            }
+            reader.readAsDataURL(file);
+        }
         document.getElementById("add_button").addEventListener("click", submit)
         function submit(event) {
           event.preventDefault()
           if (res_img.value == "" || res_name.value == "" || res_location.value == "") {
             alert("empty data")
-          } else {let form = new FormData() 
-            
-            form.append("image", res_image.value);
+          } else {let form = new FormData()
+            console.log(s)
+            form.append("img", s);
             form.append("name", res_name.value);
             form.append("location", res_location.value);
             
@@ -66,7 +74,7 @@
               url: 'http://192.168.64.2/restoratebe/add_res.php',
               data: form,
             })
-            console.log("dddd")
+            
             
           }
           
@@ -77,3 +85,4 @@
 </body>
 
 </html>
+<!--<img src="data:image/png;base64,${base64string}">-->
