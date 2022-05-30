@@ -46,6 +46,33 @@
             <p>comment 1</p>
         </div>
     </div>
+    <script>
+        res_image = document.getElementById("res_img")
+        res_name = document.getElementById("res_name")
+        res_location = document.getElementById("res_location")
+        document.getElementById("add_button").addEventListener("click", submit)
+        function submit(event) {
+          event.preventDefault()
+          if (res_img.value == "" || res_name.value == "" || res_location.value == "") {
+            alert("empty data")
+          } else {let form = new FormData() 
+            
+            form.append("image", res_image.value);
+            form.append("name", res_name.value);
+            form.append("location", res_location.value);
+            
+            axios({
+              method: 'post',
+              url: 'http://192.168.64.2/restoratebe/add_res.php',
+              data: form,
+            })
+            console.log("dddd")
+            
+          }
+          
+        }
+        
+      </script>
 
 </body>
 
