@@ -34,60 +34,45 @@
       </div>
     </div>
   </div>
-  <div class="cards">
-    <div class="card">
-      <img src="../assets/z.jpeg" alt="Avatar" style="width:100%">
-      <div class="about">
-        <h4><b>John Doe</b></h4>
-        <p>Architect & Engineer</p>
-      </div>
-    </div>
-    <div class="card">
-      <img src="img_avatar.png" alt="Avatar" style="width:100%">
-      <div class="about">
-        <h4><b>John Doe</b></h4>
-        <p>Architect & Engineer</p>
-      </div>
-    </div>
-    <div class="card">
-      <img src="img_avatar.png" alt="Avatar" style="width:100%">
-      <div class="about">
-        <h4><b>John Doe</b></h4>
-        <p>Architect & Engineer</p>
-      </div>
-    </div>
-    <div class="card">
-      <img src="img_avatar.png" alt="Avatar" style="width:100%">
-      <div class="about">
-        <h4><b>John Doe</b></h4>
-        <p>Architect & Engineer</p>
-      </div>
-    </div>
+  <div class="cards" id="cards">
+
   </div>
   <script>
-    register_fullname = document.getElementById("register_fullname")
-    register_username = document.getElementById("register_username")
-    register_password = document.getElementById("register_password")
-    document.getElementById("add_button").addEventListener("click", submit)
-    function submit() {
-      if (register_fullname.value == "" || register_username.value == "" || register_password.value == "") {
-        alert("empty data")
-      } else {let form = new FormData() 
+    cards = document.getElementById("cards")
+    console.log("hello")
+
+
+    axios({
+      method: 'get',
+      url: 'http://192.168.64.2/restoratebe/get_res.php',
+
+    })
+
+      .then(function (response) {
         
-        form.append("username", register_username.value);
-        form.append("full_name", register_fullname.value);
-        form.append("password", register_password.value);
-        
-        axios({
-          method: 'post',
-          url: 'http://192.168.64.2/restoratebe/add_res.php',
-          data: form,
-        })
-        
-        console.log
-      }
-    }
-    
+        for (var i = 0; i < response.data.length; i++) {
+          var get_img = response.data[i]["img"]
+          var get_name = response.data[i]["name"]
+          var get_location = response.data[i]["location"]
+          
+          
+          const card = document.createElement("div");
+          card.classList.add("card")
+          card.append(get_img, "\n", get_name, "\n", get_location)
+
+          function Base64ToImage(get_img, callback) {
+            var img = new Image();
+            img.onload = function () {
+              callback(img);
+            };
+            img.src = get_img;
+          }
+          
+          document.getElementById('cards').append(card)
+        }
+      })
+
+
   </script>
 </body>
 
