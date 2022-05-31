@@ -42,7 +42,7 @@
     </div>
     <div class="approve">
         <h2>Comments Queue</h2>
-        <div class="comments">
+        <div id="comments">
             <p>comment 1</p>
         </div>
     </div>
@@ -80,6 +80,34 @@
           
         }
         
+      </script>
+      <script>
+          
+            var add_comment = document.getElementById("comments")
+            
+            axios({
+            method: 'get',
+            url: 'http://192.168.64.2/restoratebe/get_comments.php',
+
+            })
+            
+            .then(function (response) {
+                console.log("hey there")
+                for (var i = 0; i < response.data.length; i++) {
+                    var comment = parseInt(i+1) + " " + response.data[i]["comment"]
+                    var id = response.data[i]["comment_id"]
+                    const card = document.createElement("div");
+                    card.classList.add("comment")
+                    card.append(comment)
+                    document.getElementById('comments').append(card)
+                    card.addEventListener("click", function () {
+                        
+                        location.href = "./comment.html";
+                    });
+                    }
+
+                    
+            })
       </script>
 
 </body>

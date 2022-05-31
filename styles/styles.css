@@ -181,6 +181,10 @@ a {
 .approve {
     padding:2%
 }
-.comments {
-    padding: 10px;
+#comments{
+    background-color: #a0a0a0;
+}
+.comment {
+    margin: 5px 0;
+    background-color: #717171;
 }
