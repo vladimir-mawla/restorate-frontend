@@ -11,7 +11,7 @@
         <div id="name">
 
         </div>
-        <div id="comments">
+        <div id="location">
             
 
             
@@ -25,26 +25,37 @@
             
         </div>
         <script>
+          
+            res_id = localStorage.getItem('res_id');
+            console.log(res_id)
+            
+            let form = new FormData()
+            form.append("res_id", res_id)
 
-        axios({
-            method: 'get',
+
+            axios({
+            method: 'post',
             url: 'http://192.168.64.2/restoratebe/get_specific_res.php',
-
+            data: form,
             })
 
             .then(function (response) {
-                console.log("hello")
+                console.log(response.data)
+                var res_id = response.data[0]["res_id"]
                 var get_img = response.data[0]["img"]
                 var get_name = response.data[0]["name"]
-                console.log(get_name)
+                
+               
+                
                 var get_location = response.data[0]["location"]
                 var profile = new Image();
-                profile.src = 'get_img';
-
+                profile.src = `${get_img}`;
+                profile.className = 'profile-img'
+                
                 document.getElementById('image').append(profile)
                 document.getElementById('name').append(get_name)
-                document.getElementById('comments').append(get_location)
-                console.log("congrats")
+                document.getElementById('location').append(get_location)
+                
                 }
                 
             )
@@ -72,6 +83,9 @@
           
         }
         
+        </script>
+        <script>
+
         </script>
     </body>
 </html>

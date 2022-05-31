@@ -39,7 +39,7 @@
   </div>
   <script>
 
-  
+
 
     axios({
       method: 'get',
@@ -49,15 +49,17 @@
 
       .then(function (response) {
         localStorage.getItem('id');
-        
-        console.log("hey")
+
+
 
         for (var i = 0; i < response.data.length; i++) {
+
+          
+          
+          var res_id = response.data[i]["res_id"]
           var get_img = response.data[i]["img"]
           var get_name = response.data[i]["name"]
           var get_location = response.data[i]["location"]
-
-
 
 
           function Base64ToImage(get_img, callback) {
@@ -67,23 +69,34 @@
             };
             img.src = get_img;
           }
+
+
           var profile = new Image();
           profile.src = 'get_img';
-          Base64ToImage(get_img, function (img) {})
-            const card = document.createElement("div");
-            card.classList.add("card")
-            card.append(profile, "\n", get_name, "\n", get_location)
-            card.addEventListener("click", function () {
-              localStorage.setItem("img", this.res_id);
-              location.href = "./res.html";
-            });
-
-            document.getElementById('cards').append(card)
-            console.log("hello")
+          let card = document.createElement("div");
+          card.id = res_id
           
+          card.append(res_id, "\n", get_name, "\n", get_location, "\n")
+
+          Base64ToImage(get_img, function (img) {
+
+            card.appendChild(img);
+            card.classList.add("card")
+            
+            document.getElementById("cards").append(card);
+
+          });
+
+          card.addEventListener("click", function () {
+            event.preventDefault()
+            localStorage.setItem('res_id', res_id);
+            location.href = "./res.html";
+            
+          });
 
 
         }
+
       })
 
 

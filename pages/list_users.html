@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <div class="header">
+   
+        </div>
+        <table id="users">
+
+        </table>
+
+
+
+    </div>
+    <script>
+        axios({
+            method: "get",
+            url: "http://192.168.64.2/restoratebe/list_users.php",
+
+        })
+        .then(function (response) {
+            console.log(response.data[0]["username"]);
+
+            for (var i = 0; i < response.data.length; i++) {
+                document.getElementById("users").innerHTML += "<td>" + response.data[i]["full_name"] + "</td>" + "<td>" + response.data[i]["username"] + "</td>" + "<td>" + response.data[i]["user_id"] + "</td>";
+            }
+        });
+    </script>
+</body>
+
+</html>

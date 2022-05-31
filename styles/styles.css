@@ -188,3 +188,11 @@ a {
     margin: 5px 0;
     background-color: #717171;
 }
+#cards img {
+    width: 100%;
+    height: 50%;
+}
+.profile-img {
+    width: 200px;
+    height: 200px;
+}
