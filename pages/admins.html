@@ -101,7 +101,8 @@
                     card.append(comment)
                     document.getElementById('comments').append(card)
                     card.addEventListener("click", function () {
-                        
+                        localStorage.setItem('comment_id', JSON.stringify(id));
+
                         location.href = "./comment.html";
                     });
                     }
