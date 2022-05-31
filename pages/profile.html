@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div class="profile">
+    </div>
+    <div class="edit">
+ 
+        <form>
+            <input type="text" id="edit_username" placeholder="new username">
+            <input type="text" id="edit_fullname" placeholder="new full name">
+            <input type="password" id="edit_password" placeholder="new password">
+            <input type="submit" id="submit">
+        </form>
+
+    </div>
+
+    <script>
+        cards = document.getElementById("cards")
+
+
+        /*
+            axios({
+              method: 'get',
+              url: 'http://192.168.64.2/restoratebe/get_profile.php',
+        
+            })
+        
+              .then(function (response) {
+                var username = response.data[0]["username"]
+                var fullname = response.data[0]["full_name"]
+
+                let card = document.createElement("div");
+                card.append(username,fullname)
+            
+                document.getElementById("profile").append(card)
+
+
+
+                })
+        
+        */
+
+    </script>
+    <script>
+        var user_id = JSON.parse(localStorage.getItem('id'))
+        console.log(user_id)
+        var username = document.getElementById("edit_username")
+        var fullname = document.getElementById("edit_fullname")
+        var password = document.getElementById("edit_password")
+    
+        document.getElementById("submit").addEventListener("click", submit)
+
+        function submit() {
+            if (username.value == "" || password.value == "" || fullname.value == "") {
+                alert("empty data")
+            } else {
+                let form = new FormData()
+
+                form.append("username", username.value);
+                form.append("full_name", fullname.value);
+                form.append("password", password.value);
+                form.append("user_id", user_id);
+
+                axios({
+                    method: 'post',
+                    url: 'http://192.168.64.2/restoratebe/edit_profile.php',
+                    data: form,
+                })
+
+                .then(function(response){
+                    console.log(response.data)
+                    if(response.data["response"] == "true") {
+                    location.href='./users.html'
+                    }
+                })
+            }
+        }
+    </script>
+</body>
+
+</html>
