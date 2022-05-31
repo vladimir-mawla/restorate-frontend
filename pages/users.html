@@ -39,7 +39,7 @@
   </div>
   <script>
     cards = document.getElementById("cards")
-    console.log("hello")
+    
 
 
     axios({
@@ -56,9 +56,7 @@
           var get_location = response.data[i]["location"]
 
 
-          const card = document.createElement("div");
-          card.classList.add("card")
-          card.append(get_img, "\n", get_name, "\n", get_location)
+
 
           function Base64ToImage(get_img, callback) {
             var img = new Image();
@@ -67,11 +65,22 @@
             };
             img.src = get_img;
           }
-          card.addEventListener("click", function () {
-            localStorage.setItem("img", this.id);
-            location.href = "./res.html";
-          });
-          document.getElementById('cards').append(card)
+          var profile = new Image();
+          profile.src = 'get_img';
+          Base64ToImage(get_img, function (img) {})
+            const card = document.createElement("div");
+            card.classList.add("card")
+            card.append(profile, "\n", get_name, "\n", get_location)
+            card.addEventListener("click", function () {
+              localStorage.setItem("img", this.res_id);
+              location.href = "./res.html";
+            });
+
+            document.getElementById('cards').append(card)
+            console.log("hello")
+          
+
+
         }
       })
 
