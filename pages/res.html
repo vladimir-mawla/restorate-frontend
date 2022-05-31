@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../styles/styles.css">
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <div id="image">
+
+        </div>
+        <div id="name">
+
+        </div>
+        <div id="comments">
+            
+                <form>
+                    <label for="img">Type your comment:</label>
+                    <input type="text" placeholder="Type your comment" id="type_comment">
+                    <input type="submit" id="add_comment">
+                  </form>
+                
+            
+        </div>
+        <script>
+
+        axios({
+            method: 'get',
+            url: 'http://192.168.64.2/restoratebe/get_specific_res.php',
+
+            })
+
+            .then(function (response) {
+                console.log("hello")
+                var get_img = response.data[0]["img"]
+                var get_name = response.data[0]["name"]
+                console.log(get_name)
+                var get_location = response.data[0]["location"]
+                var profile = new Image();
+                profile.src = 'get_img';
+
+                document.getElementById('image').append(profile)
+                document.getElementById('name').append(get_name)
+                document.getElementById('comments').append(get_location)
+                console.log("congrats")
+                }
+                
+            )
+        </script>
+        <script>
+        var type_comment = document.getElementById("type_comment")
+
+        document.getElementById("add_comment").addEventListener("click", submit)
+        function submit(event) {
+          event.preventDefault()
+          if (type_comment.value == "") {
+            alert("empty data")
+          } else {let form = new FormData()
+            
+            form.append("comment", type_comment.value);
+            
+            axios({
+              method: 'post',
+              url: 'http://192.168.64.2/restoratebe/add_comment.php',
+              data: form,
+            })
+            
+            
+          }
+          
+        }
+        
+        </script>
+    </body>
+</html>
