@@ -49,13 +49,13 @@
     })
 
       .then(function (response) {
-        
+
         for (var i = 0; i < response.data.length; i++) {
           var get_img = response.data[i]["img"]
           var get_name = response.data[i]["name"]
           var get_location = response.data[i]["location"]
-          
-          
+
+
           const card = document.createElement("div");
           card.classList.add("card")
           card.append(get_img, "\n", get_name, "\n", get_location)
@@ -67,7 +67,10 @@
             };
             img.src = get_img;
           }
-          
+          card.addEventListener("click", function () {
+            localStorage.setItem("img", this.id);
+            location.href = "./res.html";
+          });
           document.getElementById('cards').append(card)
         }
       })
