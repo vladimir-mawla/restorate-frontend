@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../styles/styles.css">
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <div id="comment"></div>
+        <button id="approve">Approve</button>
+        <button id="delete">Delete</button>
+       
+
+        <script>
+            comment_id = localStorage.getItem('comment_id');
+            console.log(comment_id)
+            document.getElementById("delete").addEventListener("click", deleteComment)
+                function deleteComment() {
+                    let form = new FormData()
+                    form.append("comment_id", comment_id)
+                    axios({
+                    method: 'post',
+                    url: 'http://192.168.64.2/restoratebe/delete_comment.php',
+                    data: form,
+                    })
+
+                    .then(function (response) {
+                        
+                        
+                        
+                        location.href='./admins.html'
+                    
+                        })
+                }
+                </script>
+    </body>
+</html>
