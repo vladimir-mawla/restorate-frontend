@@ -13,7 +13,7 @@
     <nav class="top-nav">
       <img src="#" alt="" />
       <ul class="links">
-        <li><a href="#">Profile</a></li>
+        <li><a href="./profile.html">Profile</a></li>
 
       </ul>
     </nav>
@@ -38,9 +38,8 @@
 
   </div>
   <script>
-    cards = document.getElementById("cards")
-    
 
+  
 
     axios({
       method: 'get',
@@ -49,6 +48,9 @@
     })
 
       .then(function (response) {
+        localStorage.getItem('id');
+        
+        console.log("hey")
 
         for (var i = 0; i < response.data.length; i++) {
           var get_img = response.data[i]["img"]
