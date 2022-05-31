@@ -34,6 +34,7 @@
       document.getElementById("login_button").addEventListener("click", submit)
       function submit() {
         if (login_username.value == "" || login_password.value == "") {
+          
           alert("empty data")
         } else {let form = new FormData() 
           
@@ -45,22 +46,29 @@
             url: 'http://192.168.64.2/restoratebe/login.php',
             data: form,
           })
-
+ 
           .then(function(response){
-            console.log(response.data)
+            localStorage.setItem('id', JSON.stringify(response.data["user_id"]));
+
             if(response.data["response"] == "User Not Found") {
               alert("Wrong email/password")
             }
             else if (response.data["user_type"] == 1) {
               location.href='./admins.html'
+
             }
             else if (response.data["user_type"] == null) {
               location.href='./users.html'
+
             }
+
           })
+          
+
+
         }
       }
-      
+
     </script>
   </body>
 </html>
