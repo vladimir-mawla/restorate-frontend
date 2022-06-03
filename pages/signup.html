@@ -48,9 +48,8 @@
           
           .then(function(response){
             console.log(response.data)
-            if(response.data["response"] == "true") {
+            if(response.data["success"]) {
               location.href='./users.html'
-              alert("hey")
               localStorage.setItem("user_id", response.data["user_id"]);
             }
           })
