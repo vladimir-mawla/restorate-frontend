@@ -30,7 +30,8 @@
       register_username = document.getElementById("register_username")
       register_password = document.getElementById("register_password")
       document.getElementById("register_button").addEventListener("click", submit)
-      function submit() {
+      function submit(event) {
+        event.preventDefault()
         if (register_fullname.value == "" || register_username.value == "" || register_password.value == "") {
           alert("empty data")
         } else {let form = new FormData() 
@@ -49,6 +50,8 @@
             console.log(response.data)
             if(response.data["response"] == "true") {
               location.href='./users.html'
+              alert("hey")
+              localStorage.setItem("user_id", response.data["user_id"]);
             }
           })
         }
